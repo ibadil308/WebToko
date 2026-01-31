@@ -17,7 +17,7 @@ export function ThemeProvider({
     // If not switchable, apply theme to document element for proper CSS variable cascading
     React.useEffect(() => {
       // Use classList to preserve any other classes
-      document.documentElement.classList.remove('light', 'dark', 'system');
+      document.documentElement.classList.remove('light', 'dark');
       document.documentElement.classList.add(defaultTheme);
     }, [defaultTheme]);
 

@@ -5,6 +5,7 @@ import "./index.css";
 // Load analytics script if environment variables are configured
 const analyticsEndpoint = import.meta.env.VITE_ANALYTICS_ENDPOINT;
 const analyticsWebsiteId = import.meta.env.VITE_ANALYTICS_WEBSITE_ID;
+const analyticsScriptPath = import.meta.env.VITE_ANALYTICS_SCRIPT_PATH || '/umami';
 
 if (analyticsEndpoint && analyticsWebsiteId) {
   try {
@@ -17,7 +18,7 @@ if (analyticsEndpoint && analyticsWebsiteId) {
       const cleanEndpoint = url.origin + url.pathname.replace(/\/$/, '');
       const script = document.createElement("script");
       script.defer = true;
-      script.src = `${cleanEndpoint}/umami`;
+      script.src = `${cleanEndpoint}${analyticsScriptPath}`;
       script.setAttribute("data-website-id", analyticsWebsiteId);
       document.head.appendChild(script);
     }
