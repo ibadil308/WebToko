@@ -1,4 +1,4 @@
-export default function Performance() {
+export default function PerformancePage() {
   return (
     <div className="min-h-screen flex items-center justify-center p-8">
       <div className="max-w-4xl w-full">
