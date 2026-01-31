@@ -13,9 +13,11 @@ if (analyticsEndpoint && analyticsWebsiteId) {
     if (url.protocol !== 'https:') {
       console.warn('Analytics endpoint must use HTTPS protocol');
     } else {
+      // Ensure clean URL construction - remove trailing slash from endpoint
+      const cleanEndpoint = analyticsEndpoint.replace(/\/$/, '');
       const script = document.createElement("script");
       script.defer = true;
-      script.src = `${analyticsEndpoint}/umami`;
+      script.src = `${cleanEndpoint}/umami`;
       script.setAttribute("data-website-id", analyticsWebsiteId);
       document.head.appendChild(script);
     }

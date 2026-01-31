@@ -1,4 +1,5 @@
 import { ThemeProvider as NextThemesProvider } from "next-themes";
+import * as React from "react";
 import { ReactNode } from "react";
 
 interface ThemeProviderProps {
@@ -13,12 +14,12 @@ export function ThemeProvider({
   switchable = false
 }: ThemeProviderProps) {
   if (!switchable) {
-    // If not switchable, just render children with static theme class
-    return (
-      <div className={defaultTheme}>
-        {children}
-      </div>
-    );
+    // If not switchable, apply theme to document element for proper CSS variable cascading
+    React.useEffect(() => {
+      document.documentElement.className = defaultTheme;
+    }, [defaultTheme]);
+
+    return <>{children}</>;
   }
 
   // If switchable, use next-themes
