@@ -7,6 +7,9 @@ dist/
 build/
 *.dist
 
+# Manus debug logs
+.manus-logs/
+
 # Environment variables
 .env
 .env.local
